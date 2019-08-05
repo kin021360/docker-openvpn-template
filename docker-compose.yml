@@ -23,4 +23,5 @@ services:
 
 # docker-compose run --rm openvpn_server ovpn_genconfig -u udp://VPN.SERVERNAME.COM
 # docker-compose run --rm openvpn_server ovpn_initpki
+# docker-compose run --rm openvpn_server easyrsa build-client-full xxx nopass
 # docker-compose run --rm openvpn_server ovpn_getclient xxx > xxx.ovpn
