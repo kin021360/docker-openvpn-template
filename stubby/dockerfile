@@ -1,0 +1,8 @@
+FROM ubuntu:18.04
+
+RUN apt-get update
+RUN apt-get install -y stubby dnsutils net-tools nano
+
+COPY stubby.yml /etc/stubby/
+
+ENTRYPOINT ["/usr/bin/stubby","-l"]
