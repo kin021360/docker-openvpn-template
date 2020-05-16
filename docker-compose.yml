@@ -3,8 +3,8 @@ services:
   stubbyd:
     build:
       context: ./stubby
-#    restart: always
-    restart: on-failure
+    restart: always
+#    restart: on-failure
     # ports:
     #   - "53:53/udp"
   openvpn_server:
@@ -26,9 +26,8 @@ services:
       -  stubbyd
     links:
       -  stubbyd
-    # dns: stubbyd
-    # restart: always
-    restart: on-failure
+    restart: always
+#    restart: on-failure
     ports:
       - "1194:1194/udp"
 
