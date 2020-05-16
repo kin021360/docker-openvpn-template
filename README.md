@@ -30,20 +30,20 @@ docker compose up -d
 2. Check Stubby container's ip
 
 ```bash
+# 1. check running container
+docker ps -a
+# 2. check Stubby container's ip
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [Stubby container name/id]
 ```
 
-3. Copy Stubby container's ip and modify openvpn config
-
+3. Copy Stubby container's ip and modify openvpn config   
 Let say openvpn config in `/home/ubuntu/openvpndata` (base on your mount volume location)
-
 ```bash
 # 1.
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [Stubby container name/id]
 # 2.
 nano /home/ubuntu/openvpndata/openvpn.conf
 ```
-
 Add this line: `push "dhcp-option DNS [Stubby container's ip]"` as **first priority** than other `dhcp-option DNS`
 
 4. Restart service
