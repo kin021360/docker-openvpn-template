@@ -39,8 +39,6 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [St
 Let say openvpn config in `/home/ubuntu/openvpndata` (base on your mount volume location)
 ```bash
 # 1.
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [Stubby container name/id]
-# 2.
 nano /home/ubuntu/openvpndata/openvpn.conf
 ```
 Add this line: `push "dhcp-option DNS [Stubby container's ip]"` as **first priority** than other `dhcp-option DNS`
