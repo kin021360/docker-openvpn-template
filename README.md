@@ -1,5 +1,10 @@
 # docker-openvpn-template
 
+### Build docker
+
+```bash
+docker-compose build
+```
 
 ### Setup openvpn config
 
@@ -14,17 +19,11 @@ docker-compose run --rm openvpn_server easyrsa build-client-full xxx nopass
 docker-compose run --rm openvpn_server ovpn_getclient xxx > xxx.ovpn
 ```
 
-### Build docker
-
-```bash
-docker compose build
-```
-
 ### Let client use Stubby (dns over TLS)
 
 1. Start openvpn & Stubby
 ```bash
-docker compose up -d
+docker-compose up -d
 ```
 
 2. Check Stubby container's ip
@@ -48,7 +47,7 @@ Add this line: `push "dhcp-option DNS [Stubby container's ip]"` as **first prior
 
 4. Restart service
 ```bash
-docker compose stop
-docker compose up -d
+docker-compose stop
+docker-compose up -d
 ```
 
