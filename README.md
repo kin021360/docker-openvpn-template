@@ -26,6 +26,7 @@ docker-compose run --rm openvpn_server ovpn_getclient xxx > xxx.ovpn
 nano /home/ubuntu/openvpndata/openvpn.conf
 ```
 Add this line: `push "dhcp-option DNS 172.30.0.2"` as **first priority** than other `dhcp-option DNS`
+
 Where the DNS ip is based on `docker-compose.yml` that you configured for stubby
 
 2. Restart service
