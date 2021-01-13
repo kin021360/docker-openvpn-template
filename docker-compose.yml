@@ -3,8 +3,10 @@ services:
   stubbyd:
     build:
       context: ./stubby
+    networks:
+      opv-stubby-net:
+        ipv4_address: 172.30.0.2
     restart: always
-#    restart: on-failure
     # ports:
     #   - "53:53/udp"
   openvpn_server:
@@ -22,15 +24,18 @@ services:
       - EASYRSA_KEY_SIZE=4096
       - EASYRSA_ALGO=ec
       - EASYRSA_CURVE=secp521r1
-    depends_on:
-      -  stubbyd
-    links:
-      -  stubbyd
+    networks:
+      opv-stubby-net:
+        ipv4_address: 172.30.0.3
     restart: always
-#    restart: on-failure
     ports:
       - "1194:1194/udp"
 
+networks:
+  opv-stubby-net:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
 
 # docker-compose run --rm openvpn_server ovpn_genconfig -u udp://VPN.SERVERNAME.COM
 # docker-compose run --rm openvpn_server ovpn_initpki
