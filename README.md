@@ -21,31 +21,16 @@ docker-compose run --rm openvpn_server ovpn_getclient xxx > xxx.ovpn
 
 ### Let client use Stubby (dns over TLS)
 
-1. Start openvpn & Stubby
+1. Edit `openvpn.conf`
 ```bash
-docker-compose up -d
-```
-
-2. Check Stubby container's ip
-
-```bash
-# 1. check running container
-docker ps -a
-# 2. check Stubby container's ip
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [Stubby container name/id]
-```
-
-3. Copy Stubby container's ip and modify openvpn config   
-Let say openvpn config in `/home/ubuntu/openvpndata` (base on your mount volume location)
-```bash
-# 1.
 nano /home/ubuntu/openvpndata/openvpn.conf
 ```
-Add this line: `push "dhcp-option DNS [Stubby container's ip]"` as **first priority** than other `dhcp-option DNS`
+Add this line: `push "dhcp-option DNS 172.30.0.2"` as **first priority** than other `dhcp-option DNS`
+Where the DNS ip is based on `docker-compose.yml` that you configured for stubby
 
-4. Restart service
+2. Restart service
 ```bash
-docker-compose stop
 docker-compose up -d
+# Check logs
+docker-compose logs
 ```
-
