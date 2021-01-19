@@ -14,12 +14,6 @@ upstream_recursive_servers:
   - address_data: 1.1.1.1
     tls_auth_name: "cloudflare-dns.com"
     tls_port: 853
-    tls_pubkey_pinset:
-      - digest: "sha256"
-        value: V6zes8hHBVwUECsHf7uV5xGM7dj3uMXIS9//7qC8+jU=
   - address_data: 1.0.0.1
     tls_auth_name: "cloudflare-dns.com"
     tls_port: 853
-    tls_pubkey_pinset:
-      - digest: "sha256"
-        value: V6zes8hHBVwUECsHf7uV5xGM7dj3uMXIS9//7qC8+jU=
