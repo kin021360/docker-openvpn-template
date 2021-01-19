@@ -1,7 +1,8 @@
 FROM ubuntu:18.04
 
 RUN apt-get update
-RUN apt-get install -y stubby dnsutils net-tools nano
+# https://stackoverflow.com/questions/58338266/curl-certificate-fail-in-docker-container
+RUN apt-get install -y stubby ca-certificates dnsutils net-tools nano
 
 COPY stubby.yml /etc/stubby/
 
