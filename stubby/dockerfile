@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN apt-get update
 # https://stackoverflow.com/questions/58338266/curl-certificate-fail-in-docker-container
