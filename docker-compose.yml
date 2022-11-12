@@ -12,7 +12,7 @@ services:
   openvpn_server:
     cap_add:
       - NET_ADMIN
-    image: kylemanna/openvpn:2.4
+    image: kylemanna/openvpn:latest
     # build:
     #     context: ./
     #     dockerfile: openvpn-server.dockerfile
