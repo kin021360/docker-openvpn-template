@@ -1,6 +1,9 @@
 version: '2.2'
 services:
   stubbyd:
+    logging:
+      options:
+        max-size: 100m
     build:
       context: ./stubby
     networks:
@@ -10,6 +13,9 @@ services:
     # ports:
     #   - "53:53/udp"
   openvpn_server:
+    logging:
+      options:
+        max-size: 100m
     cap_add:
       - NET_ADMIN
     image: kylemanna/openvpn:latest
@@ -21,6 +27,7 @@ services:
     shm_size: 1G
     environment:
       - EASYRSA_KEY_SIZE=4096
+      - EASYRSA_DIGEST=sha512
       - EASYRSA_ALGO=ec
       - EASYRSA_CURVE=secp521r1
     networks:
